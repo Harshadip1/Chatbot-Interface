@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — NeuralChat AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="contact">
+  <div class="particles"></div>
+  <div class="app-layout">
+<aside class="sidebar">
+  <div class="sidebar-logo"><div class="logo-icon">🤖</div><div><h1>NeuralChat</h1><span>AI Platform</span></div></div>
+  <nav class="sidebar-nav">
+    <div class="nav-section"><div class="nav-section-title">Main</div>
+      <a href="index.html" class="nav-link"><span class="icon">🏠</span>Home</a>
+      <a href="chat.html" class="nav-link"><span class="icon">💬</span>Chat</a>
+      <a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a>
+      <a href="analytics.html" class="nav-link"><span class="icon">📈</span>Analytics</a>
+      <a href="history.html" class="nav-link"><span class="icon">📜</span>History</a>
+    </div>
+    <div class="nav-section"><div class="nav-section-title">AI Tools</div>
+      <a href="prompts.html" class="nav-link"><span class="icon">📋</span>Prompts</a>
+      <a href="personas.html" class="nav-link"><span class="icon">🎭</span>Personas</a>
+      <a href="voice.html" class="nav-link"><span class="icon">🎤</span>Voice</a>
+      <a href="training.html" class="nav-link"><span class="icon">🧠</span>Training</a>
+      <a href="knowledge.html" class="nav-link"><span class="icon">📚</span>Knowledge</a>
+    </div>
+    <div class="nav-section"><div class="nav-section-title">Assistants</div>
+      <a href="coding.html" class="nav-link"><span class="icon">💻</span>Coding</a>
+      <a href="study.html" class="nav-link"><span class="icon">📖</span>Study</a>
+      <a href="productivity.html" class="nav-link"><span class="icon">⚡</span>Productivity</a>
+      <a href="translation.html" class="nav-link"><span class="icon">🌐</span>Translation</a>
+    </div>
+    <div class="nav-section"><div class="nav-section-title">More</div>
+      <a href="suggestions.html" class="nav-link"><span class="icon">💡</span>Suggestions</a>
+      <a href="community.html" class="nav-link"><span class="icon">👥</span>Community</a>
+      <a href="settings.html" class="nav-link"><span class="icon">⚙️</span>Settings</a>
+      <a href="profile.html" class="nav-link"><span class="icon">👤</span>Profile</a>
+    </div>
+  </nav>
+</aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <main class="main-content">
+<header class="top-header">
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="header-search"><span class="search-icon">🔍</span><input type="text" id="globalSearch" placeholder="Search..."></div>
+  <div class="header-actions">
+    <button class="btn btn-ghost btn-sm" id="themeToggle">🌙</button>
+    <div style="position:relative"><button class="btn btn-ghost btn-icon" id="notifBtn">🔔</button><div class="notif-dropdown glass" id="notifDropdown"></div></div>
+    <a href="profile.html" class="avatar">U</a>
+  </div>
+</header>
+      <div class="page-content">
+    <div class="page-header"><h2>Contact</h2><p>Get in touch with the platform team.</p></div>
+    <div class="glass card" style="max-width:500px">
+      <form onsubmit="event.preventDefault();App.showToast('Message sent (demo)','success')">
+        <div class="form-group"><label>Name</label><input class="form-control" required></div>
+        <div class="form-group"><label>Email</label><input type="email" class="form-control" required></div>
+        <div class="form-group"><label>Message</label><textarea class="form-control" rows="4" required></textarea></div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div></div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/compromise@14.14.4/builds/compromise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/nlp.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

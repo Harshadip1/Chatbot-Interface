@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat — NeuralChat AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="chat">
+  <div class="particles"></div>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><div class="logo-icon">🤖</div><div><h1>NeuralChat</h1><span>AI Platform</span></div></div>
+      <nav class="sidebar-nav">
+        <div class="nav-section"><div class="nav-section-title">Main</div>
+          <a href="index.html" class="nav-link"><span class="icon">🏠</span>Home</a>
+          <a href="chat.html" class="nav-link active"><span class="icon">💬</span>Chat</a>
+          <a href="dashboard.html" class="nav-link"><span class="icon">📊</span>Dashboard</a>
+          <a href="analytics.html" class="nav-link"><span class="icon">📈</span>Analytics</a>
+          <a href="history.html" class="nav-link"><span class="icon">📜</span>History</a>
+        </div>
+        <div class="nav-section"><div class="nav-section-title">AI Tools</div>
+          <a href="prompts.html" class="nav-link"><span class="icon">📋</span>Prompt Library</a>
+          <a href="personas.html" class="nav-link"><span class="icon">🎭</span>Personas</a>
+          <a href="voice.html" class="nav-link"><span class="icon">🎤</span>Voice</a>
+          <a href="training.html" class="nav-link"><span class="icon">🧠</span>Training</a>
+        </div>
+        <div class="nav-section"><div class="nav-section-title">Assistants</div>
+          <a href="coding.html" class="nav-link"><span class="icon">💻</span>Coding</a>
+          <a href="study.html" class="nav-link"><span class="icon">📖</span>Study</a>
+          <a href="settings.html" class="nav-link"><span class="icon">⚙️</span>Settings</a>
+        </div>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <main class="main-content">
+      <header class="top-header">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="header-search"><span class="search-icon">🔍</span><input type="text" id="globalSearch" placeholder="Search conversations..."></div>
+        <div class="header-actions">
+          <div class="mood-indicator"><span class="mood-dot" style="background:var(--success)"></span> AI Ready</div>
+          <button class="btn btn-ghost btn-sm" id="themeToggle">🌙</button>
+          <div style="position:relative">
+            <button class="btn btn-ghost btn-icon" id="notifBtn">🔔<span id="notifBadge" style="position:absolute;top:-4px;right:-4px;background:var(--danger);color:white;font-size:0.65rem;padding:2px 6px;border-radius:10px">6</span></button>
+            <div class="notif-dropdown glass" id="notifDropdown"></div>
+          </div>
+          <a href="profile.html" class="avatar">U</a>
+        </div>
+      </header>
+      <div class="chat-layout">
+        <div class="chat-sidebar-panel">
+          <div style="padding:16px;border-bottom:1px solid var(--border)">
+            <button class="btn btn-primary" style="width:100%" onclick="location.href='chat.html'">+ New Chat</button>
+          </div>
+          <div class="conversation-list" id="conversationList"></div>
+        </div>
+        <div class="chat-main-panel" style="flex:1;display:flex;flex-direction:column">
+          <div class="chat-header-bar">
+            <h3>🤖 NeuralChat Assistant <span class="chat-status">Online</span></h3>
+            <div>
+              <button class="btn btn-ghost btn-sm" id="clearChat">Clear</button>
+              <button class="btn btn-ghost btn-sm" onclick="Chatbot.exportChat()">Export</button>
+            </div>
+          </div>
+          <div class="messages-area" id="messagesArea"></div>
+          <div class="typing-indicator hidden" id="typingIndicator">
+            <div class="message-avatar" style="background:var(--gradient-primary)">🤖</div>
+            <div class="typing-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="chat-input-area">
+            <div class="suggested-prompts" id="suggestedPrompts"></div>
+            <div class="input-wrapper">
+              <button class="input-action-btn" id="voiceInputBtn" title="Voice input">🎤</button>
+              <textarea class="chat-textarea" id="chatInput" placeholder="Message NeuralChat AI..." rows="1"></textarea>
+              <button class="input-action-btn" title="Emoji">😊</button>
+              <button class="send-btn" id="sendBtn">➤</button>
+            </div>
+          </div>
+        </div>
+        <div class="nlp-panel" id="nlpPanel">
+          <h4>🧠 NLP Debug Panel</h4>
+          <p style="color:var(--text-muted);font-size:0.8rem">Send a message to see intent analysis, tokens, and sentiment.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/compromise@14.14.4/builds/compromise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="js/demo-data.js"></script>
+  <script src="js/nlp.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('conversationList').innerHTML = DemoData.conversations.map(c =>
+      `<div class="conversation-item" data-searchable><div class="conv-title">${c.title}</div><div class="conv-preview">${c.preview}</div><div class="conv-time">${c.time} · ${c.messages} msgs</div></div>`
+    ).join('');
+    document.getElementById('suggestedPrompts').innerHTML = DemoData.suggestedPrompts.map(p =>
+      `<span class="prompt-chip">${p}</span>`
+    ).join('');
+    VoiceUI.init();
+    Chatbot.init();
+    document.querySelectorAll('.prompt-chip').forEach(chip => {
+      chip.addEventListener('click', () => { document.getElementById('chatInput').value = chip.textContent; Chatbot.send(); });
+    });
+  </script>
+</body>
+</html>

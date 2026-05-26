@@ -1,0 +1,49 @@
+/* ===== Theme Variations ===== */
+[data-theme="ocean"] {
+  --primary: #0EA5E9;
+  --primary-light: #38BDF8;
+  --accent: #14B8A6;
+  --gradient-primary: linear-gradient(135deg, #0EA5E9 0%, #14B8A6 100%);
+}
+
+[data-theme="sunset"] {
+  --primary: #F97316;
+  --primary-light: #FB923C;
+  --accent: #EC4899;
+  --gradient-primary: linear-gradient(135deg, #F97316 0%, #EC4899 100%);
+}
+
+[data-theme="forest"] {
+  --primary: #10B981;
+  --primary-light: #34D399;
+  --accent: #84CC16;
+  --gradient-primary: linear-gradient(135deg, #10B981 0%, #84CC16 100%);
+}
+
+[data-theme="midnight"] {
+  --bg-primary: #030712;
+  --bg-secondary: #111827;
+  --primary: #8B5CF6;
+  --accent: #6366F1;
+}
+
+[data-theme="neon"] {
+  --primary: #D946EF;
+  --accent: #22D3EE;
+  --bg-primary: #0C0A1D;
+  --gradient-primary: linear-gradient(135deg, #D946EF 0%, #22D3EE 100%);
+}
+
+.theme-cosmic { background: linear-gradient(135deg, #1a0533 0%, #0F172A 50%, #0c2340 100%); }
+.theme-aurora { background: linear-gradient(135deg, #0F172A 0%, #1e3a5f 30%, #312e81 70%, #0F172A 100%); }
+.theme-solar { background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 50%, #FCD34D 100%); }
+.theme-matrix { background: linear-gradient(180deg, #000 0%, #001a00 50%, #000 100%); }
+
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Custom accent overrides via CSS variables */
+body.custom-accent {
+  transition: --primary 0.3s ease;
+}
